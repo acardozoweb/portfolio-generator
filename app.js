@@ -1,14 +1,6 @@
 const inquirer = require('inquirer');
-// const fs = require('fs');
-// const generatePage = require('./src/page-template');
-
-// const pageHTML = generatePage(name, github);
-
-// fs.writeFile('./index.html', generatePage(name, github), err => {
-//     if (err) throw new Error(err);
-
-//     console.log('Portfolio complete! Check out index.html to see the output');
-// });
+const fs = require('fs');
+const generatePage = require('./src/page-template');
 
 const promptUser = () => {
   return inquirer.prompt([
@@ -58,8 +50,6 @@ const promptUser = () => {
     }
   ]);
 };
-
-
 
 
 const promptProject = portfolioData => {
@@ -140,8 +130,24 @@ Add a New Project
 promptUser()
   .then(promptProject)
   .then(portfolioData => {
+      // const pageHTML = generatePage(name, github);
+
+fs.writeFile('./index.html', generatePage(name, github), err => {
+    if (err) throw new Error(err);
+
+//     console.log('Portfolio complete! Check out index.html to see the output');
+    });
     console.log(portfolioData);
-  });
+});
+
+
+
+
+
+
+
+
+
 
 /// COMMENTED = KEEPING FOR REFERENCE ///
 
@@ -170,4 +176,4 @@ promptUser()
 //     profileDataArr.forEach((profileItem) => console.log(profileItem));
 //   };
   
-// printProfileData(profilerDataArgs);
+// printProfileData(profilerDataArgs)
